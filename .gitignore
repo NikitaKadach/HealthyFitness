@@ -1,0 +1,27 @@
+
+# Node.js
+node_modules/
+
+# .NET
+**/bin/
+**/obj/
+
+# Build
+dist/
+**/dist/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Загруженные админом видео
+**/uploads/

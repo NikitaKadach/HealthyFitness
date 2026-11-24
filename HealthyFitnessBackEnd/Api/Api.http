@@ -1,0 +1,29 @@
+@Api_HostAddress = http://localhost:5168
+
+### Регистрация пациента
+POST {{Api_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{ "email": "patient@test.ru", "password": "password123", "name": "Тест Пациент" }
+
+### Вход (демо-физиотерапевт; демо-админ: admin@demo.ru)
+# @name login
+POST {{Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "therapist@demo.ru", "password": "demo1234" }
+
+###
+@token = {{login.response.body.$.token}}
+
+### Текущий пользователь
+GET {{Api_HostAddress}}/api/users/me
+Authorization: Bearer {{token}}
+
+### Список пациентов (физиотерапевт)
+GET {{Api_HostAddress}}/api/patients
+Authorization: Bearer {{token}}
+
+### Каталог упражнений админа
+GET {{Api_HostAddress}}/api/custom-exercises
+Authorization: Bearer {{token}}
